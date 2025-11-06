@@ -1,7 +1,7 @@
 // api/assessment/[courseId]/route.js
 
 import { connectDB } from "@/utils/db";
-import Assessment from "@/models/Assessment";
+import Assessment from "@/models/assessment";
 
 export async function GET(req, { params }) {
   await connectDB();
