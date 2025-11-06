@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Assessment from "../models/assessment.js"; // Adjust path if needed
+import Assessment from "../models/Assessment.js"; // Adjust path if needed
 import { connectDB } from "../utils/db.js"; // Your DB connection
 
 const seed = async () => {
