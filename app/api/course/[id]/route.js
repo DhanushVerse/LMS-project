@@ -41,7 +41,12 @@ export async function PATCH(req, { params }) {
 
 export async function GET(req, { params }) {
   await connectDB();
-  const { id } = await params;
+
+  const id = params.id; // ✅ No "await" here!
+
+  if (!id) {
+    return NextResponse.json({ error: "Missing course ID" }, { status: 400 });
+  }
 
   try {
     const course = await Course.findById(id);

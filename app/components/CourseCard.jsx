@@ -24,7 +24,7 @@ export default function CourseCard({
             <TiStarFullOutline />
             <TiStarFullOutline />
           </div>
-          <p className="font-semibold text-gray-700">$200</p>
+          <p className="font-semibold text-gray-700"></p>
         </div>
       </div>
       {isEnrolled ? (
@@ -39,7 +39,7 @@ export default function CourseCard({
           onClick={handlerFunction}
           className="w-full outline-none text-[#09887D] border-2 rounded-lg py-2 font-bold border-[#09887D] hover:bg-[#09887D] hover:text-white transition"
         >
-          Enrolled
+          Enroll
         </button>
       )}
     </div>

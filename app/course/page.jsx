@@ -1,11 +1,12 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import CourseCard from "../components/CourseCard";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Footer from "../components/footer";
+
+
 
 const SkeletonCard = () => (
   <div className="bg-white p-4 rounded-lg shadow-md animate-pulse">

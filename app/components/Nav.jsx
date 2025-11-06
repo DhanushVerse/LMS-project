@@ -51,10 +51,18 @@ export default function Nav() {
 
       <div className="hidden md:flex items-center space-x-4">
         <div className="flex space-x-3 text-white">
-          <FaFacebook className="cursor-pointer hover:text-[#09887D] text-2xl" />
-          <FaInstagram className="cursor-pointer hover:text-[#09887D] text-2xl" />
-          <FaTwitter className="cursor-pointer hover:text-[#09887D] text-2xl" />
-          <BsYoutube className="cursor-pointer hover:text-[#09887D] text-2xl" />
+          <a href="https://www.facebook.com/share/1AKyjmuCvQ/">
+            <FaFacebook className="cursor-pointer hover:text-[#09887D] text-2xl" />
+          </a>
+          <a href="https://www.instagram.com/shanmughainstitutions">
+            <FaInstagram className="cursor-pointer hover:text-[#09887D] text-2xl" />
+          </a>
+          <a href="https://twitter.com/srishanmugha">
+            <FaTwitter className="cursor-pointer hover:text-[#09887D] text-2xl" />
+          </a>
+          <a href="https://youtube.com/@srishanmughaeducationalins5812?feature=shared">
+            <BsYoutube className="cursor-pointer hover:text-[#09887D] text-2xl" />
+          </a>
         </div>
         {session ? (
           <>

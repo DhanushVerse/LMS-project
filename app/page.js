@@ -99,7 +99,7 @@ export default function Page() {
       </div>
 
       <CourseCategories />
-      <PricingPlans />
+      {/* <PricingPlans /> */}
       <Footer />
     </div>
   );

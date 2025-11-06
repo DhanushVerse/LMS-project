@@ -24,21 +24,21 @@ export default function Footer() {
           </p>
           <div className="flex gap-4 text-white">
             <a
-              href="#"
+              href="https://www.facebook.com/share/1AKyjmuCvQ/"
               aria-label="Facebook"
               className="bg-teal-500 p-2 rounded-full hover:bg-teal-600 transition"
             >
               <FaFacebookF />
             </a>
             <a
-              href="#"
+              href="https://twitter.com/srishanmugha"
               aria-label="Twitter"
               className="bg-teal-500 p-2 rounded-full hover:bg-teal-600 transition"
             >
               <FaTwitter />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/shanmughainstitutions"
               aria-label="Instagram"
               className="bg-teal-500 p-2 rounded-full hover:bg-teal-600 transition"
             >

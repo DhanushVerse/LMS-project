@@ -1,11 +1,11 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/footer";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import StartAssessmentButton from "@/app/components/StartAssessmentButton";
 
 export default function CourseVideoPage() {
   const { data: session } = useSession();
@@ -27,9 +27,9 @@ export default function CourseVideoPage() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await fetch(`/api/course?id=${id}`);
+        const res = await fetch(`/api/course/${id}`);
         const data = await res.json();
-        const fetchedCourse = data.data[0];
+        const fetchedCourse = data.course;
         setCourse(fetchedCourse);
         setUrl(fetchedCourse.modules?.[0]?.youtubeUrl || "");
         setVideoTitle(fetchedCourse.modules?.[0]?.title || "Introduction");
@@ -43,11 +43,9 @@ export default function CourseVideoPage() {
   useEffect(() => {
     const fetchInstructor = async () => {
       if (!course?.instructor) return;
-
       try {
         const res = await fetch(`/api/instructor/?id=${course.instructor}`);
         const result = await res.json();
-        console.log(result);
         setInstructorEmail(result.data.email);
       } catch (err) {
         console.error("Instructor fetch error:", err);
@@ -59,14 +57,12 @@ export default function CourseVideoPage() {
   const handleSendMail = async () => {
     setSending(true);
     setMailStatus("");
-
     const payload = {
       instructorEmail,
       courseTitle: course?.title,
       studentEmail: session?.user?.email,
       message,
     };
-
     try {
       const res = await fetch("/api/sendMail", {
         method: "POST",
@@ -127,6 +123,10 @@ export default function CourseVideoPage() {
     setDownloading(false);
   };
 
+  // const startAssessment = () => {
+  //   router.push(`/assessment/${course._id}`);
+  // };
+
   if (error) {
     return (
       <div className="min-h-screen flex justify-center items-center text-red-600 text-lg">
@@ -179,6 +179,8 @@ export default function CourseVideoPage() {
             </p>
           )}
         </section>
+
+        {/* Right: Modules and Actions */}
         <aside className="w-full lg:w-[30%] max-h-[70vh] bg-white rounded-xl shadow-lg p-4 overflow-y-auto">
           <h3 className="text-xl sm:text-2xl font-semibold mb-4">
             Course Contents
@@ -197,6 +199,16 @@ export default function CourseVideoPage() {
               </li>
             ))}
           </ul>
+
+          {/* <button
+             onClick={() => router.push(`/course/${id}/assessment`)}
+            className="mt-4 w-full px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition disabled:opacity-60"
+          >
+            Start Assessment
+          </button> */}
+    
+
+
           <button
             className="mt-4 w-full px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition disabled:opacity-60"
             onClick={generateCertificate}
